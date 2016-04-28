@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MVC_webapp.Models.Room>
+
+@{
+    ViewBag.Title = "Rooms List";
+}
+
+<h2>Rooms List</h2>
+
+<p>
+   
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Room Number
+        </th>
+        <th>
+          Room Info
+        </th>
+        <th>
+           Room Status
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Extra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+          Price ($)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Extra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomPrice)
+        </td>
+        <td>
+            <a href='@Url.Action("Edit","Rooms",new { id=item.RoomNum }, Request.Url.Scheme)' class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+            <a href='@Url.Action("Details","Rooms", new { id=item.RoomNum }, Request.Url.Scheme)' class="btn btn-xs btn-info modal-link"><span class="glyphicon glyphicon-info-sign"></span> Details</a>
+            <a href='@Url.Action("Delete","Rooms", new { id=item.RoomNum }, Request.Url.Scheme)' class="btn btn-sx btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+
+        </td>
+    </tr>
+}
+
+</table>

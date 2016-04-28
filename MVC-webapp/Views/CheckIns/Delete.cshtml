@@ -1,0 +1,90 @@
+﻿@model MVC_webapp.Models.CheckIn
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CheckIn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckInDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckInDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOfReservedDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumOfReservedDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoAdults)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoAdults)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoChildren)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoChildren)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassportNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassportNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.checkoutstatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkoutstatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.RoomInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room.RoomInfo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-sx btn-danger" />
+            <a href='@Url.Action("Index","CheckIns")' class="btn  btn-sm btn-info"><span class="glyphicon glyphicon-backward"></span> Go Back</a>
+
+        </div>
+    }
+</div>

@@ -1,44 +1,268 @@
-﻿<!DOCTYPE html>
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>Hotel Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    @*//yeni eklendi*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />   
+    <link href="~/Content/icon-font.min.css" rel="stylesheet" />
+    <script src="~/Scripts/Chart.js"></script>
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <script src="~/Scripts/wow.min.js"></script>
+    <link href="~/Content/modalstyles.css" rel="stylesheet" />
+    <script>
+		 new WOW().init();
+    </script>
+    <link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*//yeni eklendi*@
+
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+<body class="sticky-header left-side-collapsed">
+    <section>
+        <!-- left side start-->
+        <div class="left-side sticky-left-side">
+
+            <!--logo and iconic logo start-->
+            <div class="logo">
+                <h1><a href="~/Home/index">arricie<span>Hotel</span></a></h1>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <div class="logo-icon text-center">
+                <a href="~/Home/index"><i class="lnr lnr-home"></i> </a>
+            </div>
+
+            <!--logo and iconic logo end-->
+            <div class="left-side-inner">
+
+                <!--sidebar nav start-->
+                <ul class="nav nav-pills nav-stacked custom-nav">
+                    <li><a href="/Customers/Index"><i class="lnr lnr-mustache"></i> <span>Customers</span></a></li>
+                    <li><a href="/CheckIns/Index"><i class="lnr lnr-enter"></i> <span>Check In</span></a></li>
+                    <li><a href="/CheckOuts/Index"><i class="lnr lnr-exit"></i> <span>Check Out</span></a></li>
+                    <li><a href="/Rooms/Index"><i class="lnr lnr-apartment"></i> <span>Rooms</span></a></li>
+                    <li><a href="/Orders/Index"><i class="lnr lnr-cart"></i> <span>Orders</span></a></li>
+                    <li><a href="/Bills/Index"><i class="lnr lnr-chart-bars"></i> <span>Bills</span></a></li>
+
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <!--sidebar nav end-->
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <!-- left side end-->
+        <!-- main content start-->
+        <div class="main-content main-content2 main-content2copy">
+            <!-- header-starts -->
+            <div class="header-section">
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+                <!--toggle button start-->
+                <a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+                <!--toggle button end-->
+                <!--notification menu start -->
+                <div class="menu-right">
+                    <div class="user-panel-top">
+                        <div class="profile_details_left">
+                            <ul class="nofitications-dropdown">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
+
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>You have 3 new messages</h3>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                              
+                                                <div class="user_img"><img src="~/images/person1.png" alt=""></div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li class="odd">
+                                            <a href="#">
+                                                <div class="user_img"><img src="~/images/person1.png" alt=""></div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor sit amet </p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="user_img"><img src="~/images/person1.png" alt=""></div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor sit amet </p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">See all messages</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="login_box" id="loginContainer">
+                                    <div class="search-box">
+                                        <div id="sb-search" class="sb-search">
+                                            <form>
+                                                <input class="sb-search-input" placeholder="Enter your search term..." type="search" id="search">
+                                                <input class="sb-search-submit" type="submit" value="">
+                                                <span class="sb-icon-search"> </span>
+                                            </form>
+                                        </div>
+                                    </div>
+
+
+                                
+
+
+                                    <!-- search-scripts -->
+                               
+                                    <script src="~/Scripts/classie.js"></script>
+                                    <script src="~/Scripts/uisearch.js"></script>
+                                    <script>
+									        new UISearch( document.getElementById( 'sb-search' ) );
+                                    </script>
+                                    <!-- //search-scripts -->
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="profile_details">
+                            <ul>
+                                <li class="dropdown profile_details_drop">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <div class="profile_img">
+                                            <span style="background:url(../images/1.jpg) no-repeat center"> </span>
+                                            <div class="user-name">
+                                                <p>Aykut ARICI<span>Administrator</span></p>
+                                            </div>
+                                            <i class="lnr lnr-chevron-down"></i>
+                                            <i class="lnr lnr-chevron-up"></i>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu drp-mnu">
+                                        <li> <a href="#"><i class="fa fa-user"></i>Profile</a> </li>
+                                        <li> <a href="sign-up.html"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                    </ul>
+                                </li>
+                               
+                            </ul>
+                        </div>
+                        <div class="social_icons">
+                            <div class="col-md-4 social_icons-left">
+                            </div>
+                            <div class="col-md-4 social_icons-left pinterest">
+                            </div>
+                            <div class="col-md-4 social_icons-left twi">
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!--notification menu end -->
+            </div>
+            <!-- Sil -->
+    
+            <!-- Sil -->
+            <div id="modal-container" class="modal fade modalimDetails" tabindex="-1" role="dialog">
+                <div  class="modal-dialog boxbackcol">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div  class="modal-body">
+                           
+
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <!-- Sil -->
+
+
+            <script type="text/javascript">
+        $(function () {
+            // Initialize numeric spinner input boxes
+            //$(".numeric-spinner").spinedit();
+            // Initialize modal dialog
+            // attach modal-container bootstrap attributes to links with .modal-link class.
+            // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
+            $('body').on('click', '.modal-link', function (e) {
+                e.preventDefault();
+                $(this).attr('data-target', '#modal-container');
+                $(this).attr('data-backdrop', '');//cannot click outside of modal-content
+                $(this).attr('data-toggle', 'modal');
+            });
+            // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+            $('body').on('click', '.modal-close-btn', function () {
+                $('#modal-container').modal('hide');
+            });
+            //clear modal cache, so that new content can be loaded
+            $('#modal-container').on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+            $('#CancelModal').on('click', function () {
+                return false;
+            });
+
+        });
+
+            </script>
+
+            <!-- Sil -->
+
+
+            <!-- //header-ends -->
+            <div id="page-wrapper">
+         @RenderBody()
+            </div></div>
+            <!--footer section start-->
+            <footer>
+              
+               
+                <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>
+            </footer>
+            <!--footer section end-->
+    </section>
+
+
+    <script src="~/Scripts/jquery.nicescroll.js"></script>
+    <script src="~/Scripts/scripts.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/ai.0.15.0-build58334.min.js"></script>
+ 
+    <script src="~/Scripts/respond.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

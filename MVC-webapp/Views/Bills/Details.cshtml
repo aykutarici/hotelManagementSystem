@@ -1,0 +1,164 @@
+﻿@model MVC_webapp.Models.Bill
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/modalstyles.css" rel="stylesheet" />
+
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+@*//yeni eklendi*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/icon-font.min.css" rel="stylesheet" />
+<script src="~/Scripts/Chart.js"></script>
+<link href="~/Content/animate.css" rel="stylesheet" />
+<script src="~/Scripts/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+
+<div class="boxbackcol">
+    <div class="modal-title" style="color:#3A87AD;">
+        <h2>Bill Details</h2>
+    </div>
+
+    @using (Html.BeginForm("details", "Bills", FormMethod.Post))
+    {
+
+        <div>
+            
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumOfReservedDays)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumOfReservedDays)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Type)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Type)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RoomPrice)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RoomPrice)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LaundryPrice)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LaundryPrice)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RentCarPrice)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RentCarPrice)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TotalPrice)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TotalPrice)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.surname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.surname)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BillDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BillDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.noadult)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.noadult)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.nochild)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.nochild)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.customerID)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.customerID)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Room.RoomInfo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Room.RoomInfo)
+                </dd>
+
+            </dl>
+        </div>
+
+
+        <center>
+            <p>
+                <a href='@Url.Action("Edit","Bills",new { id=Model.BillID }, Request.Url.Scheme)' class="btn btn-xs btn-warning modaleditrenk"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                <a href='@Url.Action("Index","Bills")' class="btn  btn-sm btn-info"><span class="glyphicon glyphicon-backward"></span> Go Back</a>
+
+            </p>
+        </center>
+    }
+</div>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/scripts.js"></script>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#btnback').click(function () {
+            $('modal-container').modal('hide');
+        });
+    });
+</script>

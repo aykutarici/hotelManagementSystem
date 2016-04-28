@@ -1,0 +1,146 @@
+﻿@model MVC_webapp.Models.Customer
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/modalstyles.css" rel="stylesheet" />
+
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+@*//yeni eklendi*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/icon-font.min.css" rel="stylesheet" />
+<script src="~/Scripts/Chart.js"></script>
+<link href="~/Content/animate.css" rel="stylesheet" />
+<script src="~/Scripts/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+
+<div class="boxbackcol">
+    <div class="modal-title" style="color:#3A87AD;">
+        <h2>Customer Details</h2>
+    </div>
+
+    @using (Html.BeginForm("details", "Customers", FormMethod.Post))
+    {
+
+        <div>
+
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Surname)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PassportNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PassportNo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Gender)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Country)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Country)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.City)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.City)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BirthDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BirthDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.checkstatus)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.checkstatus)
+                </dd>
+
+            </dl>
+        </div>
+        <center>
+            <p>
+                <a href='@Url.Action("Edit","Customers",new { id=Model.CustomerID }, Request.Url.Scheme)' class="btn btn-xs btn-warning modaleditrenk"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                <a href='@Url.Action("Index","Customers")' class="btn  btn-sm btn-info"><span class="glyphicon glyphicon-backward"></span> Go Back</a>
+
+            </p>
+        </center>
+    }
+</div>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/scripts.js"></script>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#btnback').click(function () {
+            $('modal-container').modal('hide');
+        });
+    });
+</script>

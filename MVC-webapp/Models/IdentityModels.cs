@@ -21,7 +21,7 @@ namespace MVC_webapp.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("MVC_HotelProject2Entities", throwIfV1Schema: false)
         {
         }
 

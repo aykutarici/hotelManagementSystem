@@ -1,0 +1,90 @@
+﻿@model MVC_webapp.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServicePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServicePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Laundry.ServiceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Laundry.ServiceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RentCar.CarBrand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RentCar.CarBrand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.RoomInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room.RoomInfo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
