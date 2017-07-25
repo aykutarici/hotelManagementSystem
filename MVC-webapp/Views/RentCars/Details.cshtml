@@ -1,0 +1,50 @@
+﻿@model MVC_webapp.Models.RentCar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RentCar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.serviceID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serviceID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarBrand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarBrand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CarID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

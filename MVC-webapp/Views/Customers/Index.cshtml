@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MVC_webapp.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers List";
+}
+
+<h2>Customers List</h2>
+
+<p>
+   
+      
+            @Html.ActionLink("Add New Customer", "Create", null, new { @class = "btn btn-block btn-lg btn-success"})
+            
+       
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            Check Status
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.checkstatus)
+        </td>
+        <td>
+         
+            <a href='@Url.Action("Edit","Customers",new { id=item.CustomerID }, Request.Url.Scheme)' class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+            <a href='@Url.Action("Details","Customers", new { id=item.CustomerID }, Request.Url.Scheme)' class="btn btn-xs btn-info modal-link"><span class="glyphicon glyphicon-info-sign"></span> Details</a>
+ 
+            
+              <a href='@Url.Action("Delete","Customers", new { id=item.CustomerID }, Request.Url.Scheme)' class="btn btn-sx btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+
+        </td>
+    </tr>
+}
+
+</table>

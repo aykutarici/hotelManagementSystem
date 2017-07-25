@@ -1,0 +1,86 @@
+﻿@model IEnumerable<MVC_webapp.Models.Bill>
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Bills</h2>
+
+<p>
+  
+    <input class="btn btn-primary" type="button" value="Print Bills" id="btnPrint" />
+
+</p>
+
+<div id="dvContainer">
+    <table class="table">
+        <tr>
+            <th>
+                Room Number
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Surname
+            </th>
+            <th>
+                Stayed Days
+            </th>
+            <th>
+                Total Price
+            </th>
+            <th>
+                Bill Date
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumOfReservedDays)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BillDate)
+                </td>
+                <td>
+                    <a href='@Url.Action("Edit","Bills",new { id=item.BillID }, Request.Url.Scheme)' class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                    <a href='@Url.Action("Details","Bills", new { id=item.BillID }, Request.Url.Scheme)' class="btn btn-xs btn-info modal-link"><span class="glyphicon glyphicon-info-sign"></span> Details</a>
+                    <a href='@Url.Action("Delete","Bills", new { id=item.BillID }, Request.Url.Scheme)' class="btn btn-sx btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                </td>
+            </tr>
+            
+        }
+
+    </table>
+    </div>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("#btnPrint").live("click", function () {
+            var divContents = $("#dvContainer").html();
+            var printWindow = window.open('', '', 'height=400,width=800');
+            printWindow.document.write('<html><head><title>DIV Contents</title>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(divContents);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        });
+    </script>

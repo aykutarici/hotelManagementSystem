@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MVC_webapp.Models.Order>
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2>Orders</h2>
+
+<p>
+    <a href='@Url.Action("Create",null, Request.Url.Scheme)' class="yarimbutton btn btn-default btn-lg btn-success"><span class="lnr lnr-shirt"></span> Laundry </a>
+    <a href='@Url.Action("Create",null, Request.Url.Scheme)' class = "yarimbutton btn btn-default btn-lg btn-success"><span class="lnr lnr-car"></span> Rent a Car </a >
+</p>
+<table class="table">
+    <tr>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.RoomNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServicePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderPrice)
+        </th>  
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServicePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastDay)
+        </td>
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderPrice)
+        </td>
+       
+        <td>
+            <a href='@Url.Action("Edit","Rooms",new { id=item.RoomNum }, Request.Url.Scheme)' class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+            <a href='@Url.Action("Details","Rooms", new { id=item.RoomNum }, Request.Url.Scheme)' class="btn btn-xs btn-info modal-link"><span class="glyphicon glyphicon-info-sign"></span> Details</a>
+            <a href='@Url.Action("Delete","Rooms", new { id=item.RoomNum }, Request.Url.Scheme)' class="btn btn-sx btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+        </td>
+    </tr>
+
+}
+
+</table>

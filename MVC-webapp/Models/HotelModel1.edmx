@@ -1,0 +1,835 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MVC_HotelProject2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bills">
+          <Key>
+            <PropertyRef Name="BillID" />
+          </Key>
+          <Property Name="BillID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumOfReservedDays" Type="int" />
+          <Property Name="RoomNum" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoomPrice" Type="float" Nullable="false" />
+          <Property Name="LaundryPrice" Type="float" />
+          <Property Name="RentCarPrice" Type="float" />
+          <Property Name="TotalPrice" Type="float" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="BillDate" Type="date" />
+          <Property Name="noadult" Type="int" />
+          <Property Name="nochild" Type="int" />
+          <Property Name="customerID" Type="int" />
+        </EntityType>
+        <EntityType Name="CheckIn">
+          <Key>
+            <PropertyRef Name="CheckInID" />
+          </Key>
+          <Property Name="CheckInID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CheckInDate" Type="date" />
+          <Property Name="NumOfReservedDays" Type="int" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="RoomNum" Type="int" Nullable="false" />
+          <Property Name="NoAdults" Type="int" />
+          <Property Name="NoChildren" Type="int" />
+          <Property Name="PassportNo" Type="int" Nullable="false" />
+          <Property Name="checkoutstatus" Type="int" />
+        </EntityType>
+        <EntityType Name="CheckOut">
+          <Key>
+            <PropertyRef Name="CheckOutID" />
+          </Key>
+          <Property Name="CheckOutID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CheckOutDate" Type="date" />
+          <Property Name="CheckInID" Type="int" Nullable="false" />
+          <Property Name="RoomNum" Type="int" Nullable="false" />
+          <Property Name="customerID" Type="int" Nullable="false" />
+          <Property Name="noadults" Type="int" Nullable="false" />
+          <Property Name="nochild" Type="int" />
+          <Property Name="passportnum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="PassportNo" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="checkstatus" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Laundry">
+          <Key>
+            <PropertyRef Name="LoundryID" />
+          </Key>
+          <Property Name="LoundryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceID" Type="int" Nullable="false" />
+          <Property Name="ServiceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ServiceInfo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="UserID_from" />
+          </Key>
+          <Property Name="UserID_from" Type="int" Nullable="false" />
+          <Property Name="UserID_to" Type="int" Nullable="false" />
+          <Property Name="message" Type="nvarchar" MaxLength="200" />
+          <Property Name="date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceID" Type="int" Nullable="false" />
+          <Property Name="RoomNum" Type="int" Nullable="false" />
+          <Property Name="ServicePrice" Type="float" Nullable="false" />
+          <Property Name="FirstDay" Type="date" />
+          <Property Name="LastDay" Type="date" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="OrderPrice" Type="float" Nullable="false" />
+          <Property Name="CarID" Type="int" />
+          <Property Name="LoundryID" Type="int" />
+        </EntityType>
+        <EntityType Name="RentCar">
+          <Key>
+            <PropertyRef Name="CarID" />
+          </Key>
+          <Property Name="CarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serviceID" Type="int" Nullable="false" />
+          <Property Name="CarBrand" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Price" Type="float" />
+        </EntityType>
+        <EntityType Name="Rooms">
+          <Key>
+            <PropertyRef Name="RoomNum" />
+          </Key>
+          <Property Name="RoomNum" Type="int" Nullable="false" />
+          <Property Name="RoomInfo" Type="nvarchar(max)" />
+          <Property Name="RoomStatus" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Extra" Type="nchar" MaxLength="10" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoomPrice" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="image" Type="image" />
+          <Property Name="MemorizeQuestion" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemorizeAnswer" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Bills_Rooms">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+          <End Role="Bills" Type="Self.Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomNum" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="RoomNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_Rooms">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomNum" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="RoomNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckOut_CheckIn">
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="1" />
+          <End Role="CheckOut" Type="Self.CheckOut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CheckIn">
+              <PropertyRef Name="CheckInID" />
+            </Principal>
+            <Dependent Role="CheckOut">
+              <PropertyRef Name="CheckInID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckOut_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="CheckOut" Type="Self.CheckOut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CheckOut">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckOut_Rooms">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+          <End Role="CheckOut" Type="Self.CheckOut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomNum" />
+            </Principal>
+            <Dependent Role="CheckOut">
+              <PropertyRef Name="RoomNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="UserID_from" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Laundry">
+          <End Role="Laundry" Type="Self.Laundry" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laundry">
+              <PropertyRef Name="LoundryID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="LoundryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_RentCar">
+          <End Role="RentCar" Type="Self.RentCar" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentCar">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Rooms">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomNum" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="RoomNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MVC_HotelProject2ModelStoreContainer">
+          <EntitySet Name="Bills" EntityType="Self.Bills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CheckIn" EntityType="Self.CheckIn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CheckOut" EntityType="Self.CheckOut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Laundry" EntityType="Self.Laundry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentCar" EntityType="Self.RentCar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bills_Rooms" Association="Self.FK_Bills_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_Customers" Association="Self.FK_CheckIn_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="CheckIn" EntitySet="CheckIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_Rooms" Association="Self.FK_CheckIn_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="CheckIn" EntitySet="CheckIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckOut_CheckIn" Association="Self.FK_CheckOut_CheckIn">
+            <End Role="CheckIn" EntitySet="CheckIn" />
+            <End Role="CheckOut" EntitySet="CheckOut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckOut_Customers" Association="Self.FK_CheckOut_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="CheckOut" EntitySet="CheckOut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckOut_Rooms" Association="Self.FK_CheckOut_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="CheckOut" EntitySet="CheckOut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Users" Association="Self.FK_Messages_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Laundry" Association="Self.FK_Order_Laundry">
+            <End Role="Laundry" EntitySet="Laundry" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_RentCar" Association="Self.FK_Order_RentCar">
+            <End Role="RentCar" EntitySet="RentCar" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Rooms" Association="Self.FK_Order_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MVC_HotelProject2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="BillID" />
+          </Key>
+          <Property Name="BillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumOfReservedDays" Type="Int32" />
+          <Property Name="RoomNum" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoomPrice" Type="Double" Nullable="false" />
+          <Property Name="LaundryPrice" Type="Double" />
+          <Property Name="RentCarPrice" Type="Double" />
+          <Property Name="TotalPrice" Type="Double" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillDate" Type="DateTime" Precision="0" />
+          <Property Name="noadult" Type="Int32" />
+          <Property Name="nochild" Type="Int32" />
+          <Property Name="customerID" Type="Int32" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_Bills_Rooms" FromRole="Bills" ToRole="Rooms" />
+        </EntityType>
+        <EntityType Name="CheckIn">
+          <Key>
+            <PropertyRef Name="CheckInID" />
+          </Key>
+          <Property Name="CheckInID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CheckInDate" Type="DateTime" Precision="0" />
+          <Property Name="NumOfReservedDays" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="RoomNum" Type="Int32" Nullable="false" />
+          <Property Name="NoAdults" Type="Int32" />
+          <Property Name="NoChildren" Type="Int32" />
+          <Property Name="PassportNo" Type="Int32" Nullable="false" />
+          <Property Name="checkoutstatus" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_CheckIn_Customers" FromRole="CheckIn" ToRole="Customers" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_CheckIn_Rooms" FromRole="CheckIn" ToRole="Rooms" />
+          <NavigationProperty Name="CheckOuts" Relationship="Self.FK_CheckOut_CheckIn" FromRole="CheckIn" ToRole="CheckOut" />
+        </EntityType>
+        <EntityType Name="CheckOut">
+          <Key>
+            <PropertyRef Name="CheckOutID" />
+          </Key>
+          <Property Name="CheckOutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CheckOutDate" Type="DateTime" Precision="0" />
+          <Property Name="CheckInID" Type="Int32" Nullable="false" />
+          <Property Name="RoomNum" Type="Int32" Nullable="false" />
+          <Property Name="customerID" Type="Int32" Nullable="false" />
+          <Property Name="noadults" Type="Int32" Nullable="false" />
+          <Property Name="nochild" Type="Int32" />
+          <Property Name="passportnum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CheckIn" Relationship="Self.FK_CheckOut_CheckIn" FromRole="CheckOut" ToRole="CheckIn" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_CheckOut_Rooms" FromRole="CheckOut" ToRole="Rooms" />
+          <NavigationProperty Name="Customer" Relationship="MVC_HotelProject2Model.FK_CheckOut_Customers" FromRole="CheckOut" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PassportNo" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="checkstatus" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CheckIns" Relationship="Self.FK_CheckIn_Customers" FromRole="Customers" ToRole="CheckIn" />
+          <NavigationProperty Name="CheckOuts" Relationship="MVC_HotelProject2Model.FK_CheckOut_Customers" FromRole="Customer" ToRole="CheckOut" />
+        </EntityType>
+        <EntityType Name="Laundry">
+          <Key>
+            <PropertyRef Name="LoundryID" />
+          </Key>
+          <Property Name="LoundryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceID" Type="Int32" Nullable="false" />
+          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Laundry" FromRole="Laundry" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceID" Type="Int32" Nullable="false" />
+          <Property Name="RoomNum" Type="Int32" Nullable="false" />
+          <Property Name="ServicePrice" Type="Double" Nullable="false" />
+          <Property Name="FirstDay" Type="DateTime" Precision="0" />
+          <Property Name="LastDay" Type="DateTime" Precision="0" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="OrderPrice" Type="Double" Nullable="false" />
+          <Property Name="CarID" Type="Int32" />
+          <Property Name="LoundryID" Type="Int32" />
+          <NavigationProperty Name="Laundry" Relationship="Self.FK_Order_Laundry" FromRole="Order" ToRole="Laundry" />
+          <NavigationProperty Name="RentCar" Relationship="Self.FK_Order_RentCar" FromRole="Order" ToRole="RentCar" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_Order_Rooms" FromRole="Order" ToRole="Rooms" />
+        </EntityType>
+        <EntityType Name="RentCar">
+          <Key>
+            <PropertyRef Name="CarID" />
+          </Key>
+          <Property Name="CarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serviceID" Type="Int32" Nullable="false" />
+          <Property Name="CarBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_RentCar" FromRole="RentCar" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomNum" />
+          </Key>
+          <Property Name="RoomNum" Type="Int32" Nullable="false" />
+          <Property Name="RoomInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoomStatus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Extra" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoomPrice" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK_Bills_Rooms" FromRole="Rooms" ToRole="Bills" />
+          <NavigationProperty Name="CheckIns" Relationship="Self.FK_CheckIn_Rooms" FromRole="Rooms" ToRole="CheckIn" />
+          <NavigationProperty Name="CheckOuts" Relationship="Self.FK_CheckOut_Rooms" FromRole="Rooms" ToRole="CheckOut" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Rooms" FromRole="Rooms" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemorizeQuestion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemorizeAnswer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Message" Relationship="MVC_HotelProject2Model.FK_Messages_Users" FromRole="User" ToRole="Message" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          </EntityType>
+        <Association Name="FK_Bills_Rooms">
+          <End Role="Rooms" Type="Self.Room" Multiplicity="1" />
+          <End Role="Bills" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomNum" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="RoomNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_Rooms">
+          <End Role="Rooms" Type="Self.Room" Multiplicity="1" />
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomNum" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="RoomNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckOut_CheckIn">
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="1" />
+          <End Role="CheckOut" Type="Self.CheckOut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CheckIn">
+              <PropertyRef Name="CheckInID" />
+            </Principal>
+            <Dependent Role="CheckOut">
+              <PropertyRef Name="CheckInID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckOut_Rooms">
+          <End Role="Rooms" Type="Self.Room" Multiplicity="1" />
+          <End Role="CheckOut" Type="Self.CheckOut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomNum" />
+            </Principal>
+            <Dependent Role="CheckOut">
+              <PropertyRef Name="RoomNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Laundry">
+          <End Role="Laundry" Type="Self.Laundry" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laundry">
+              <PropertyRef Name="LoundryID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="LoundryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_RentCar">
+          <End Role="RentCar" Type="Self.RentCar" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentCar">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Rooms">
+          <End Role="Rooms" Type="Self.Room" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomNum" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="RoomNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MVC_HotelProject2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bills" EntityType="Self.Bill" />
+          <EntitySet Name="CheckIns" EntityType="Self.CheckIn" />
+          <EntitySet Name="CheckOuts" EntityType="Self.CheckOut" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Laundries" EntityType="Self.Laundry" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="RentCars" EntityType="Self.RentCar" />
+          <EntitySet Name="Rooms" EntityType="Self.Room" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Bills_Rooms" Association="Self.FK_Bills_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_Customers" Association="Self.FK_CheckIn_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="CheckIn" EntitySet="CheckIns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_Rooms" Association="Self.FK_CheckIn_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="CheckIn" EntitySet="CheckIns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckOut_CheckIn" Association="Self.FK_CheckOut_CheckIn">
+            <End Role="CheckIn" EntitySet="CheckIns" />
+            <End Role="CheckOut" EntitySet="CheckOuts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckOut_Rooms" Association="Self.FK_CheckOut_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="CheckOut" EntitySet="CheckOuts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Laundry" Association="Self.FK_Order_Laundry">
+            <End Role="Laundry" EntitySet="Laundries" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_RentCar" Association="Self.FK_Order_RentCar">
+            <End Role="RentCar" EntitySet="RentCars" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Rooms" Association="Self.FK_Order_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckOut_Customers" Association="MVC_HotelProject2Model.FK_CheckOut_Customers">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CheckOut" EntitySet="CheckOuts" />
+          </AssociationSet>
+          <EntitySet Name="Messages" EntityType="MVC_HotelProject2Model.Message" />
+          <AssociationSet Name="FK_Messages_Users" Association="MVC_HotelProject2Model.FK_Messages_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_CheckOut_Customers">
+          <End Type="MVC_HotelProject2Model.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="MVC_HotelProject2Model.CheckOut" Role="CheckOut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CheckOut">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="UserID_from" />
+          </Key>
+          <Property Name="UserID_from" Type="Int32" Nullable="false" />
+          <Property Name="UserID_to" Type="Int32" Nullable="false" />
+          <Property Name="message1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="User" Relationship="MVC_HotelProject2Model.FK_Messages_Users" FromRole="Message" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Messages_Users">
+          <End Type="MVC_HotelProject2Model.User" Role="User" Multiplicity="1" />
+          <End Type="MVC_HotelProject2Model.Message" Role="Message" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="UserID_from" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MVC_HotelProject2ModelStoreContainer" CdmEntityContainer="MVC_HotelProject2Entities">
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="MVC_HotelProject2Model.Bill">
+              <MappingFragment StoreEntitySet="Bills">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="NumOfReservedDays" ColumnName="NumOfReservedDays" />
+                <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="RoomPrice" ColumnName="RoomPrice" />
+                <ScalarProperty Name="LaundryPrice" ColumnName="LaundryPrice" />
+                <ScalarProperty Name="RentCarPrice" ColumnName="RentCarPrice" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+                <ScalarProperty Name="noadult" ColumnName="noadult" />
+                <ScalarProperty Name="nochild" ColumnName="nochild" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckIns">
+            <EntityTypeMapping TypeName="MVC_HotelProject2Model.CheckIn">
+              <MappingFragment StoreEntitySet="CheckIn">
+                <ScalarProperty Name="CheckInID" ColumnName="CheckInID" />
+                <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+                <ScalarProperty Name="NumOfReservedDays" ColumnName="NumOfReservedDays" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+                <ScalarProperty Name="NoAdults" ColumnName="NoAdults" />
+                <ScalarProperty Name="NoChildren" ColumnName="NoChildren" />
+                <ScalarProperty Name="PassportNo" ColumnName="PassportNo" />
+                <ScalarProperty Name="checkoutstatus" ColumnName="checkoutstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckOuts">
+            <EntityTypeMapping TypeName="MVC_HotelProject2Model.CheckOut">
+              <MappingFragment StoreEntitySet="CheckOut">
+                <ScalarProperty Name="CheckOutID" ColumnName="CheckOutID" />
+                <ScalarProperty Name="CheckOutDate" ColumnName="CheckOutDate" />
+                <ScalarProperty Name="CheckInID" ColumnName="CheckInID" />
+                <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="noadults" ColumnName="noadults" />
+                <ScalarProperty Name="nochild" ColumnName="nochild" />
+                <ScalarProperty Name="passportnum" ColumnName="passportnum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="MVC_HotelProject2Model.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="PassportNo" ColumnName="PassportNo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="checkstatus" ColumnName="checkstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Laundries">
+            <EntityTypeMapping TypeName="MVC_HotelProject2Model.Laundry">
+              <MappingFragment StoreEntitySet="Laundry">
+                <ScalarProperty Name="LoundryID" ColumnName="LoundryID" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="ServiceInfo" ColumnName="ServiceInfo" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="MVC_HotelProject2Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+                <ScalarProperty Name="ServicePrice" ColumnName="ServicePrice" />
+                <ScalarProperty Name="FirstDay" ColumnName="FirstDay" />
+                <ScalarProperty Name="LastDay" ColumnName="LastDay" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="LoundryID" ColumnName="LoundryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentCars">
+            <EntityTypeMapping TypeName="MVC_HotelProject2Model.RentCar">
+              <MappingFragment StoreEntitySet="RentCar">
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="serviceID" ColumnName="serviceID" />
+                <ScalarProperty Name="CarBrand" ColumnName="CarBrand" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="MVC_HotelProject2Model.Room">
+              <MappingFragment StoreEntitySet="Rooms">
+                <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+                <ScalarProperty Name="RoomInfo" ColumnName="RoomInfo" />
+                <ScalarProperty Name="RoomStatus" ColumnName="RoomStatus" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="RoomPrice" ColumnName="RoomPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MVC_HotelProject2Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MVC_HotelProject2Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="MemorizeQuestion" ColumnName="MemorizeQuestion" />
+                <ScalarProperty Name="MemorizeAnswer" ColumnName="MemorizeAnswer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="MVC_HotelProject2Model.Message">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="message1" ColumnName="message" />
+                <ScalarProperty Name="UserID_to" ColumnName="UserID_to" />
+                <ScalarProperty Name="UserID_from" ColumnName="UserID_from" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

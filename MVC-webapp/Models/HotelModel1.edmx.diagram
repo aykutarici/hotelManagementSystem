@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dc5ded6f9848499ca8f2b28c4dbe38cc" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="MVC_HotelProject2Model.Bill" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_HotelProject2Model.CheckIn" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_HotelProject2Model.CheckOut" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_HotelProject2Model.Customer" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_HotelProject2Model.Laundry" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_HotelProject2Model.Order" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_HotelProject2Model.RentCar" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_HotelProject2Model.Room" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_HotelProject2Model.sysdiagram" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC_HotelProject2Model.User" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="MVC_HotelProject2Model.FK_Bills_Rooms" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_HotelProject2Model.FK_CheckIn_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_HotelProject2Model.FK_CheckIn_Rooms" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_HotelProject2Model.FK_CheckOut_CheckIn" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_HotelProject2Model.FK_CheckOut_Rooms" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_HotelProject2Model.FK_Order_Laundry" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_HotelProject2Model.FK_Order_RentCar" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_HotelProject2Model.FK_Order_Rooms" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC_HotelProject2Model.FK_CheckOut_Customers" ManuallyRouted="true" >
+          <ConnectorPoint PointX="5.25" PointY="11.510416666666666" />
+          <ConnectorPoint PointX="6.666666666666667" PointY="11.510416666666666" />
+          <ConnectorPoint PointX="6.833333333333333" PointY="11.510416666666666" />
+          <ConnectorPoint PointX="8.625" PointY="11.510416666666666" />
+          <ConnectorPoint PointX="8.625" PointY="9.2590950520833335" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MVC_HotelProject2Model.Message" Width="1.5" PointX="8" PointY="1.75" />
+        <AssociationConnector Association="MVC_HotelProject2Model.FK_Messages_Users" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

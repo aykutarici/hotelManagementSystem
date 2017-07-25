@@ -1,0 +1,26 @@
+﻿.modalimDetails {
+    padding-top:10px;
+ text-align:center;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    position: relative;
+   background-color:rgba(255,255,255,.9);
+   
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    outline: 0;
+
+   box-sizing: border-box;
+   position: fixed;
+   margin:auto;
+   max-height:500px;
+   max-width:350px;
+}
+
+.modaleditrenk {
+    background-color: #ffcc33;
+    border-color: #ffcc33;
+}
+boxbackcol{
+    background-color:white;
+}

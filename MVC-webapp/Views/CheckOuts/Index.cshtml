@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MVC_webapp.Models.CheckOut>
+
+@{
+    ViewBag.Title = "Check Out";
+}
+
+
+    <h2>Check Out</h2>
+    <p>
+        @Html.ActionLink("Check Out Customer", "Create", null, new { @class = "btn btn-block btn-lg btn-success" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Checkin Date
+            </th>
+            <th>
+               Name
+            </th>
+            <th>
+               Room Number
+            </th>
+            <th>
+               Stayed Days
+            </th>
+            <th>
+                Adult
+            </th>
+            <th>
+                Children
+            </th>
+            <th>
+               Checkout Date
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckIn.CheckInDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.RoomNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckIn.NumOfReservedDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckIn.NoAdults)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckIn.NoChildren)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckOutDate)
+            </td>
+            <td>
+            
+                <a href='@Url.Action("Edit","CheckOuts",new { id=item.CheckOutID }, Request.Url.Scheme)' class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                <a href='@Url.Action("Details","CheckOuts", new { id=item.CheckOutID }, Request.Url.Scheme)' class="btn btn-xs btn-info modal-link"><span class="glyphicon glyphicon-info-sign"></span> Details</a>
+                <a href='@Url.Action("Delete","CheckOuts", new { id=item.CheckOutID }, Request.Url.Scheme)' class="btn btn-sx btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+
+            </td>
+        </tr>
+    }
+    
+    </table>
+

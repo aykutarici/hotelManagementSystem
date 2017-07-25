@@ -1,0 +1,158 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Hotel Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    @*//yeni eklendi*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/icon-font.min.css" rel="stylesheet" />
+    <script src="~/Scripts/Chart.js"></script>
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <script src="~/Scripts/wow.min.js"></script>
+    <link href="~/Content/modalstyles.css" rel="stylesheet" />
+    <script>
+		 new WOW().init();
+    </script>
+    <link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*//yeni eklendi*@
+
+
+</head>
+
+<body class="sticky-header left-side-collapsed">
+    <section>
+        <!-- left side start-->
+        <div class="left-side sticky-left-side">
+
+            <!--logo and iconic logo start-->
+            <div class="logo">
+                <h1><a href="#" class="modal-link">arricie<span>Hotel</span></a></h1>
+            </div>
+            <div class="logo-icon text-center">
+                <a href="#"><i class="lnr lnr-home modal-link"></i> </a>
+            </div>
+
+            <!--logo and iconic logo end-->
+            <div class="left-side-inner">
+
+                <!--sidebar nav start-->
+                <ul class="nav nav-pills nav-stacked custom-nav">
+                    <li><a href="#"><i class="lnr lnr-mustache modal-link"></i> <span>Customers</span></a></li>
+                    <li><a href="#"><i class="lnr lnr-enter modal-link"></i> <span>Check In</span></a></li>
+                    <li><a href="#"><i class="lnr lnr-exit modal-link"></i> <span>Check Out</span></a></li>
+                    <li><a href="#"><i class="lnr lnr-apartment modal-link"></i> <span>Rooms</span></a></li>
+                    <li><a href="#"><i class="lnr lnr-cart modal-link"></i> <span>Orders</span></a></li>
+                    <li><a href="#"><i class="lnr lnr-chart-bars modal-link"></i> <span>Bills</span></a></li>
+
+                </ul>
+                <!--sidebar nav end-->
+            </div>
+        </div>
+        <!-- left side end-->
+        <!-- main content start-->
+        <div class="main-content main-content2 main-content2copy">
+            <!-- header-starts -->
+            <div class="header-section">
+
+                <!--toggle button start-->
+                <a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+                <!--toggle button end-->
+                <!--notification menu start -->
+                <div class="menu-right">
+          
+                </div>
+                <!--notification menu end -->
+            </div>
+            <!-- Sil -->
+            <!-- Sil -->
+            <div id="modal-container" class="modal fade modalimDetails" tabindex="-1" role="dialog">
+                <div class="modal-dialog boxbackcol">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+
+
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <!-- Sil -->
+
+
+            <script type="text/javascript">
+        $(function () {
+            // Initialize numeric spinner input boxes
+            //$(".numeric-spinner").spinedit();
+            // Initialize modal dialog
+            // attach modal-container bootstrap attributes to links with .modal-link class.
+            // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
+            $('body').on('click', '.modal-link', function (e) {
+                e.preventDefault();
+                $(this).attr('data-target', '#modal-container');
+                $(this).attr('data-backdrop', '');//cannot click outside of modal-content
+                $(this).attr('data-toggle', 'modal');
+            });
+            // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+            $('body').on('click', '.modal-close-btn', function () {
+                $('#modal-container').modal('hide');
+            });
+            //clear modal cache, so that new content can be loaded
+            $('#modal-container').on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+            $('#CancelModal').on('click', function () {
+                return false;
+            });
+
+        });
+
+            </script>
+
+            <!-- Sil -->
+            <!-- //header-ends -->
+            <div id="page-wrapper">
+                @RenderBody()
+            </div>
+        </div>
+        <!--footer section start-->
+        <footer>
+
+
+            <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>
+        </footer>
+        <!--footer section end-->
+    </section>
+
+
+    <script src="~/Scripts/jquery.nicescroll.js"></script>
+    <script src="~/Scripts/scripts.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/ai.0.15.0-build58334.min.js"></script>
+
+    <script src="~/Scripts/respond.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

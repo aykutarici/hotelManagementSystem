@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MVC_webapp.Models.CheckIn>
+
+@{
+    ViewBag.Title = "Check In";
+}
+
+<h2>Check In</h2>
+
+<p>
+    @Html.ActionLink("Check In Customer", "Create", null, new { @class = "btn btn-block btn-lg btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Checkin Date
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Room Number
+        </th>
+        <th>
+            Reserved Days
+        </th>
+        <th>
+            Adults
+        </th>
+        <th>
+            Children
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckInDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Room.RoomNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumOfReservedDays)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoAdults)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoChildren)
+        </td>
+        <td>
+            <a href='@Url.Action("Edit","CheckIns",new { id=item.CheckInID }, Request.Url.Scheme)' class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+            <a href='@Url.Action("Details","CheckIns", new { id=item.CheckInID }, Request.Url.Scheme)' class="btn btn-xs btn-info modal-link"><span class="glyphicon glyphicon-info-sign"></span> Details</a>
+            <a href='@Url.Action("Delete","CheckIns", new { id=item.CheckInID }, Request.Url.Scheme)' class="btn btn-sx btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+
+        </td>
+    </tr>
+}
+
+</table>
