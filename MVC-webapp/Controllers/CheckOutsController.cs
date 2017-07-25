@@ -7,10 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC_webapp.Models;
+using MVC_webapp.Util;
 
 namespace MVC_webapp.Controllers
 {
-    public class CheckOutsController : Controller
+    public class CheckOutsController : BaseController
     {
         private MVC_HotelProject2Entities db = new MVC_HotelProject2Entities();
 
@@ -40,8 +41,9 @@ namespace MVC_webapp.Controllers
         public ActionResult Create()
         {
             ViewBag.CheckInID = new SelectList(db.CheckIns, "CheckInID", "CheckInID");
-            ViewBag.RoomNum = new SelectList(db.Rooms, "RoomNum", "RoomInfo");
+            ViewBag.RoomNum = new SelectList(db.Rooms, "RoomNum", "RoomNum");
             ViewBag.customerID = new SelectList(db.Customers, "CustomerID", "Name");
+           
             return View();
         }
 

@@ -4,6 +4,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -52,6 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 <!--sidebar nav start-->
                 <ul class="nav nav-pills nav-stacked custom-nav">
+                    <li><br /></li><li><br /></li>
                     <li><a href="/Customers/Index"><i class="lnr lnr-mustache"></i> <span>Customers</span></a></li>
                     <li><a href="/CheckIns/Index"><i class="lnr lnr-enter"></i> <span>Check In</span></a></li>
                     <li><a href="/CheckOuts/Index"><i class="lnr lnr-exit"></i> <span>Check Out</span></a></li>
@@ -75,66 +77,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!--notification menu start -->
                 <div class="menu-right">
                     <div class="user-panel-top">
-                        <div class="profile_details_left">
-                            <ul class="nofitications-dropdown">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
+                       @* <div class="profile_details_left">
+    <ul class="nofitications-dropdown">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
 
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <div class="notification_header">
-                                                <h3>You have 3 new messages</h3>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                              
-                                                <div class="user_img"><img src="~/images/person1.png" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                    <p><span>1 hour ago</span></p>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </a>
-                                        </li>
-                                        <li class="odd">
-                                            <a href="#">
-                                                <div class="user_img"><img src="~/images/person1.png" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>Lorem ipsum dolor sit amet </p>
-                                                    <p><span>1 hour ago</span></p>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="user_img"><img src="~/images/person1.png" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>Lorem ipsum dolor sit amet </p>
-                                                    <p><span>1 hour ago</span></p>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="notification_bottom">
-                                                <a href="#">See all messages</a>
-                                            </div>
-                                        </li>
-                                    </ul>
+            <ul class="dropdown-menu">
+                <li>
+                    <div class="notification_header">
+                        <h3>You have 3 new messages</h3>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+
+                        <div class="user_img"><img src="~/images/person1.png" alt=""></div>
+                        <div class="notification_desc">
+                            <p>Lorem ipsum dolor sit amet</p>
+                            <p><span>1 hour ago</span></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                </li>
+                <li class="odd">
+                    <a href="#">
+                        <div class="user_img"><img src="~/images/person1.png" alt=""></div>
+                        <div class="notification_desc">
+                            <p>Lorem ipsum dolor sit amet </p>
+                            <p><span>1 hour ago</span></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="user_img"><img src="~/images/person1.png" alt=""></div>
+                        <div class="notification_desc">
+                            <p>Lorem ipsum dolor sit amet </p>
+                            <p><span>1 hour ago</span></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                </li>
+                <li>
+                    <div class="notification_bottom">
+                        <a href="#">See all messages</a>
+                    </div>
+                </li>
+            </ul>
                                 </li>
                                 <li class="login_box" id="loginContainer">
-                                    <div class="search-box">
-                                        <div id="sb-search" class="sb-search">
-                                            <form>
-                                                <input class="sb-search-input" placeholder="Enter your search term..." type="search" id="search">
-                                                <input class="sb-search-submit" type="submit" value="">
-                                                <span class="sb-icon-search"> </span>
-                                            </form>
-                                        </div>
-                                    </div>
-
+                               
 
                                 
 
@@ -150,14 +143,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </li>
                             </ul>
                         </div>
-                        <div class="profile_details">
+                    *@
+
+                        <div class="profile_details pd222">
                             <ul>
                                 <li class="dropdown profile_details_drop">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                         <div class="profile_img">
-                                            <span style="background:url(../images/1.jpg) no-repeat center"> </span>
+                                            @{ var adminimg = Session["admin"];
+                                                if (adminimg==null)
+                                                {
+                                                    adminimg = "blank";
+                                                }
+                                                }
+                                            <span  class="no-repeat center"> <img src="~/images/@(adminimg).jpg" alt="~/images/blank.jpg" /> </span>
+                                            
+                                          
                                             <div class="user-name">
-                                                <p>Aykut ARICI<span>Administrator</span></p>
+                                                <span style="font-size:16px;padding-left:10px;"> @Session["logedusername"] </span>
                                             </div>
                                             <i class="lnr lnr-chevron-down"></i>
                                             <i class="lnr lnr-chevron-up"></i>
@@ -166,7 +169,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </a>
                                     <ul class="dropdown-menu drp-mnu">
                                         <li> <a href="#"><i class="fa fa-user"></i>Profile</a> </li>
-                                        <li> <a href="sign-up.html"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                        <li> <a href="/Login/Index"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                        
                                     </ul>
                                 </li>
                                
@@ -243,6 +247,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <!-- //header-ends -->
             <div id="page-wrapper">
+            <br /><br />
          @RenderBody()
             </div></div>
             <!--footer section start-->

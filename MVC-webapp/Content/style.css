@@ -15,6 +15,14 @@ html, body{
   	overflow-x: hidden;
 	background: #f9f9f9;
 }
+.input-group {
+    position: relative;
+    display: table;
+    width: 81%;
+    float: left;
+    margin: 0 0 0 14px;
+    border-collapse: separate;
+}
 body a{
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
@@ -1714,7 +1722,7 @@ ul.dropdown-menu {
 /********* profile details **********/
 .profile_details{
 	float: right;
-    margin: 0 4.8em 0 1em;
+    margin: 0 13.8em 0 1em;
 }
 .profile_details_drop .lnr.lnr-chevron-up{
 	display:none;
@@ -3139,14 +3147,7 @@ select[multiple] {
 .pad0A {
   padding: 0!important;
 }
-.input-group {
-	position: relative;
-    display: table;
-    width: 45%;
-    float: left;
-    margin: 0 0 0 10em;
-    border-collapse: separate;
-}
+
 .has-success .input-group-addon {
   border-color:#A4E7A5 !important;
 }
@@ -5881,7 +5882,7 @@ canvas#bar1 {
     width: 14%;
 }
 .input-group {
-    margin: 0 0 0 1em;
+    margin: 0 0 0 14px;
 	width:40%;
 }	
 .navbar-right {

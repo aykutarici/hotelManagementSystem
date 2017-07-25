@@ -14,18 +14,10 @@ namespace MVC_webapp.Models
     
     public partial class Message
     {
-        public int UserID { get; set; }
+        public int UserID_from { get; set; }
+        public int UserID_to { get; set; }
         public string message1 { get; set; }
-        public string message2 { get; set; }
-        public string message3 { get; set; }
-        public string message4 { get; set; }
-        public string message5 { get; set; }
-        public string message6 { get; set; }
-        public string message7 { get; set; }
-        public string message8 { get; set; }
-        public string message9 { get; set; }
-        public string message10 { get; set; }
-        public byte boxfull { get; set; }
+        public System.DateTime date { get; set; }
     
         public virtual User User { get; set; }
     }

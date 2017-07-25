@@ -7,10 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC_webapp.Models;
+using MVC_webapp.Util;
 
 namespace MVC_webapp.Controllers
 {
-    public class CheckInsController : Controller
+    public class CheckInsController : BaseController
     {
         private MVC_HotelProject2Entities db = new MVC_HotelProject2Entities();
 
@@ -40,7 +41,7 @@ namespace MVC_webapp.Controllers
         public ActionResult Create()
         {
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "Name");
-            ViewBag.RoomNum = new SelectList(db.Rooms, "RoomNum", "RoomInfo");
+            ViewBag.RoomNum = new SelectList(db.Rooms, "RoomNum", "RoomNum");
             return View();
         }
 
@@ -59,7 +60,9 @@ namespace MVC_webapp.Controllers
             }
 
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "Name", checkIn.CustomerID);
-            ViewBag.RoomNum = new SelectList(db.Rooms, "RoomNum", "RoomInfo", checkIn.RoomNum);
+            ViewBag.RoomNum = new SelectList(db.Rooms, "RoomNum", "RoomNum", checkIn.RoomNum);
+
+
             return View(checkIn);
         }
 
@@ -76,7 +79,7 @@ namespace MVC_webapp.Controllers
                 return HttpNotFound();
             }
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "Name", checkIn.CustomerID);
-            ViewBag.RoomNum = new SelectList(db.Rooms, "RoomNum", "RoomInfo", checkIn.RoomNum);
+            ViewBag.RoomNum = new SelectList(db.Rooms, "RoomNum", "RoomNum", checkIn.RoomNum);
             return View(checkIn);
         }
 
@@ -98,7 +101,7 @@ namespace MVC_webapp.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "Name", checkIn.CustomerID);
-            ViewBag.RoomNum = new SelectList(db.Rooms, "RoomNum", "RoomInfo", checkIn.RoomNum);
+            ViewBag.RoomNum = new SelectList(db.Rooms, "RoomNum", "RoomNum", checkIn.RoomNum);
             return View(checkIn);
         }
 

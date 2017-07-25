@@ -80,20 +80,12 @@
         </EntityType>
         <EntityType Name="Messages">
           <Key>
-            <PropertyRef Name="UserID" />
+            <PropertyRef Name="UserID_from" />
           </Key>
-          <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="message1" Type="nchar" MaxLength="10" />
-          <Property Name="message2" Type="nchar" MaxLength="10" />
-          <Property Name="message3" Type="nchar" MaxLength="10" />
-          <Property Name="message4" Type="nchar" MaxLength="10" />
-          <Property Name="message5" Type="nchar" MaxLength="10" />
-          <Property Name="message6" Type="nchar" MaxLength="10" />
-          <Property Name="message7" Type="nchar" MaxLength="10" />
-          <Property Name="message8" Type="nchar" MaxLength="10" />
-          <Property Name="message9" Type="nchar" MaxLength="10" />
-          <Property Name="message10" Type="nchar" MaxLength="10" />
-          <Property Name="boxfull" Type="tinyint" Nullable="false" />
+          <Property Name="UserID_from" Type="int" Nullable="false" />
+          <Property Name="UserID_to" Type="int" Nullable="false" />
+          <Property Name="message" Type="nvarchar" MaxLength="200" />
+          <Property Name="date" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -148,6 +140,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="image" Type="image" />
           <Property Name="MemorizeQuestion" Type="nvarchar" MaxLength="50" />
           <Property Name="MemorizeAnswer" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -231,7 +224,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Messages">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="UserID_from" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -411,24 +404,6 @@
           <Property Name="Price" Type="Double" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Laundry" FromRole="Laundry" ToRole="Order" />
         </EntityType>
-        <EntityType Name="Message">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="message1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="message2" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="message3" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="message4" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="message5" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="message6" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="message7" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="message8" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="message9" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="message10" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="boxfull" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Messages_Users" FromRole="Messages" ToRole="Users" />
-        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -492,8 +467,9 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MemorizeQuestion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MemorizeAnswer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Message" Relationship="Self.FK_Messages_Users" FromRole="Users" ToRole="Messages" />
-        </EntityType>
+          <NavigationProperty Name="Message" Relationship="MVC_HotelProject2Model.FK_Messages_Users" FromRole="User" ToRole="Message" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          </EntityType>
         <Association Name="FK_Bills_Rooms">
           <End Role="Rooms" Type="Self.Room" Multiplicity="1" />
           <End Role="Bills" Type="Self.Bill" Multiplicity="*" />
@@ -566,18 +542,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Messages_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Messages" Type="Self.Message" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Messages">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Order_RentCar">
           <End Role="RentCar" Type="Self.RentCar" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -608,7 +572,6 @@
           <EntitySet Name="CheckOuts" EntityType="Self.CheckOut" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Laundries" EntityType="Self.Laundry" />
-          <EntitySet Name="Messages" EntityType="Self.Message" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="RentCars" EntityType="Self.RentCar" />
           <EntitySet Name="Rooms" EntityType="Self.Room" />
@@ -638,10 +601,6 @@
             <End Role="Laundry" EntitySet="Laundries" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK_Messages_Users" Association="Self.FK_Messages_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Messages" EntitySet="Messages" />
-          </AssociationSet>
           <AssociationSet Name="FK_Order_RentCar" Association="Self.FK_Order_RentCar">
             <End Role="RentCar" EntitySet="RentCars" />
             <End Role="Order" EntitySet="Orders" />
@@ -654,6 +613,11 @@
             <End Role="Customer" EntitySet="Customers" />
             <End Role="CheckOut" EntitySet="CheckOuts" />
           </AssociationSet>
+          <EntitySet Name="Messages" EntityType="MVC_HotelProject2Model.Message" />
+          <AssociationSet Name="FK_Messages_Users" Association="MVC_HotelProject2Model.FK_Messages_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_CheckOut_Customers">
           <End Type="MVC_HotelProject2Model.Customer" Role="Customer" Multiplicity="1" />
@@ -664,6 +628,28 @@
             </Principal>
             <Dependent Role="CheckOut">
               <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="UserID_from" />
+          </Key>
+          <Property Name="UserID_from" Type="Int32" Nullable="false" />
+          <Property Name="UserID_to" Type="Int32" Nullable="false" />
+          <Property Name="message1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="User" Relationship="MVC_HotelProject2Model.FK_Messages_Users" FromRole="Message" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Messages_Users">
+          <End Type="MVC_HotelProject2Model.User" Role="User" Multiplicity="1" />
+          <End Type="MVC_HotelProject2Model.Message" Role="Message" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="UserID_from" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -751,24 +737,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Messages">
-            <EntityTypeMapping TypeName="MVC_HotelProject2Model.Message">
-              <MappingFragment StoreEntitySet="Messages">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="message1" ColumnName="message1" />
-                <ScalarProperty Name="message2" ColumnName="message2" />
-                <ScalarProperty Name="message3" ColumnName="message3" />
-                <ScalarProperty Name="message4" ColumnName="message4" />
-                <ScalarProperty Name="message5" ColumnName="message5" />
-                <ScalarProperty Name="message6" ColumnName="message6" />
-                <ScalarProperty Name="message7" ColumnName="message7" />
-                <ScalarProperty Name="message8" ColumnName="message8" />
-                <ScalarProperty Name="message9" ColumnName="message9" />
-                <ScalarProperty Name="message10" ColumnName="message10" />
-                <ScalarProperty Name="boxfull" ColumnName="boxfull" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="MVC_HotelProject2Model.Order">
               <MappingFragment StoreEntitySet="Order">
@@ -822,11 +790,22 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="MVC_HotelProject2Model.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="MemorizeQuestion" ColumnName="MemorizeQuestion" />
                 <ScalarProperty Name="MemorizeAnswer" ColumnName="MemorizeAnswer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="MVC_HotelProject2Model.Message">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="message1" ColumnName="message" />
+                <ScalarProperty Name="UserID_to" ColumnName="UserID_to" />
+                <ScalarProperty Name="UserID_from" ColumnName="UserID_from" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

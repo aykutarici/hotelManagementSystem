@@ -11,7 +11,7 @@ using System.Data.Entity.Infrastructure.MappingViews;
 
 [assembly: DbMappingViewCacheTypeAttribute(
     typeof(MVC_webapp.Models.MVC_HotelProject2Entities),
-    typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets9683f0e37187897e114fb9eb952f006245226afff82a47fcbc4ad75bc674a847))]
+    typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySetse5fc6b5c7d9afc232571c6e61e6a496ccdace2408911f0042b51b9db8e9d7df6))]
 
 namespace Edm_EntityMappingGeneratedViews
 {
@@ -23,14 +23,14 @@ namespace Edm_EntityMappingGeneratedViews
     /// Implements a mapping view cache.
     /// </summary>
     [GeneratedCode("Entity Framework Power Tools", "0.9.0.0")]
-    internal sealed class ViewsForBaseEntitySets9683f0e37187897e114fb9eb952f006245226afff82a47fcbc4ad75bc674a847 : DbMappingViewCache
+    internal sealed class ViewsForBaseEntitySetse5fc6b5c7d9afc232571c6e61e6a496ccdace2408911f0042b51b9db8e9d7df6 : DbMappingViewCache
     {
         /// <summary>
         /// Gets a hash value computed over the mapping closure.
         /// </summary>
         public override string MappingHashValue
         {
-            get { return "9683f0e37187897e114fb9eb952f006245226afff82a47fcbc4ad75bc674a847"; }
+            get { return "e5fc6b5c7d9afc232571c6e61e6a496ccdace2408911f0042b51b9db8e9d7df6"; }
         }
 
         /// <summary>
@@ -127,32 +127,32 @@ namespace Edm_EntityMappingGeneratedViews
                 return GetView15();
             }
 
-            if (extentName == "MVC_HotelProject2ModelStoreContainer.Messages")
+            if (extentName == "MVC_HotelProject2ModelStoreContainer.sysdiagrams")
             {
                 return GetView16();
             }
 
-            if (extentName == "MVC_HotelProject2ModelStoreContainer.Users")
+            if (extentName == "MVC_HotelProject2Entities.sysdiagrams")
             {
                 return GetView17();
             }
 
-            if (extentName == "MVC_HotelProject2Entities.Messages")
+            if (extentName == "MVC_HotelProject2ModelStoreContainer.Users")
             {
                 return GetView18();
             }
 
-            if (extentName == "MVC_HotelProject2Entities.Users")
+            if (extentName == "MVC_HotelProject2ModelStoreContainer.Messages")
             {
                 return GetView19();
             }
 
-            if (extentName == "MVC_HotelProject2ModelStoreContainer.sysdiagrams")
+            if (extentName == "MVC_HotelProject2Entities.Users")
             {
                 return GetView20();
             }
 
-            if (extentName == "MVC_HotelProject2Entities.sysdiagrams")
+            if (extentName == "MVC_HotelProject2Entities.Messages")
             {
                 return GetView21();
             }
@@ -555,108 +555,10 @@ namespace Edm_EntityMappingGeneratedViews
         }
 
         /// <summary>
-        /// Gets the view for MVC_HotelProject2ModelStoreContainer.Messages.
-        /// </summary>
-        /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView16()
-        {
-            return new DbMappingView(@"
-    SELECT VALUE -- Constructing Messages
-        [MVC_HotelProject2Model.Store.Messages](T1.Messages_UserID, T1.Messages_message1, T1.Messages_message2, T1.Messages_message3, T1.Messages_message4, T1.Messages_message5, T1.Messages_message6, T1.Messages_message7, T1.Messages_message8, T1.Messages_message9, T1.Messages_message10, T1.Messages_boxfull)
-    FROM (
-        SELECT 
-            T.UserID AS Messages_UserID, 
-            T.message1 AS Messages_message1, 
-            T.message2 AS Messages_message2, 
-            T.message3 AS Messages_message3, 
-            T.message4 AS Messages_message4, 
-            T.message5 AS Messages_message5, 
-            T.message6 AS Messages_message6, 
-            T.message7 AS Messages_message7, 
-            T.message8 AS Messages_message8, 
-            T.message9 AS Messages_message9, 
-            T.message10 AS Messages_message10, 
-            T.boxfull AS Messages_boxfull, 
-            True AS _from0
-        FROM MVC_HotelProject2Entities.Messages AS T
-    ) AS T1");
-        }
-
-        /// <summary>
-        /// Gets the view for MVC_HotelProject2ModelStoreContainer.Users.
-        /// </summary>
-        /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView17()
-        {
-            return new DbMappingView(@"
-    SELECT VALUE -- Constructing Users
-        [MVC_HotelProject2Model.Store.Users](T1.Users_ID, T1.Users_Name, T1.Users_Password, T1.Users_MemorizeQuestion, T1.Users_MemorizeAnswer)
-    FROM (
-        SELECT 
-            T.ID AS Users_ID, 
-            T.Name AS Users_Name, 
-            T.Password AS Users_Password, 
-            T.MemorizeQuestion AS Users_MemorizeQuestion, 
-            T.MemorizeAnswer AS Users_MemorizeAnswer, 
-            True AS _from0
-        FROM MVC_HotelProject2Entities.Users AS T
-    ) AS T1");
-        }
-
-        /// <summary>
-        /// Gets the view for MVC_HotelProject2Entities.Messages.
-        /// </summary>
-        /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView18()
-        {
-            return new DbMappingView(@"
-    SELECT VALUE -- Constructing Messages
-        [MVC_HotelProject2Model.Message](T1.Message_UserID, T1.Message_message1, T1.Message_message2, T1.Message_message3, T1.Message_message4, T1.Message_message5, T1.Message_message6, T1.Message_message7, T1.Message_message8, T1.Message_message9, T1.Message_message10, T1.Message_boxfull)
-    FROM (
-        SELECT 
-            T.UserID AS Message_UserID, 
-            T.message1 AS Message_message1, 
-            T.message2 AS Message_message2, 
-            T.message3 AS Message_message3, 
-            T.message4 AS Message_message4, 
-            T.message5 AS Message_message5, 
-            T.message6 AS Message_message6, 
-            T.message7 AS Message_message7, 
-            T.message8 AS Message_message8, 
-            T.message9 AS Message_message9, 
-            T.message10 AS Message_message10, 
-            T.boxfull AS Message_boxfull, 
-            True AS _from0
-        FROM MVC_HotelProject2ModelStoreContainer.Messages AS T
-    ) AS T1");
-        }
-
-        /// <summary>
-        /// Gets the view for MVC_HotelProject2Entities.Users.
-        /// </summary>
-        /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView19()
-        {
-            return new DbMappingView(@"
-    SELECT VALUE -- Constructing Users
-        [MVC_HotelProject2Model.User](T1.User_ID, T1.User_Name, T1.User_Password, T1.User_MemorizeQuestion, T1.User_MemorizeAnswer)
-    FROM (
-        SELECT 
-            T.ID AS User_ID, 
-            T.Name AS User_Name, 
-            T.Password AS User_Password, 
-            T.MemorizeQuestion AS User_MemorizeQuestion, 
-            T.MemorizeAnswer AS User_MemorizeAnswer, 
-            True AS _from0
-        FROM MVC_HotelProject2ModelStoreContainer.Users AS T
-    ) AS T1");
-        }
-
-        /// <summary>
         /// Gets the view for MVC_HotelProject2ModelStoreContainer.sysdiagrams.
         /// </summary>
         /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView20()
+        private static DbMappingView GetView16()
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing sysdiagrams
@@ -677,7 +579,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// Gets the view for MVC_HotelProject2Entities.sysdiagrams.
         /// </summary>
         /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView21()
+        private static DbMappingView GetView17()
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing sysdiagrams
@@ -691,6 +593,90 @@ namespace Edm_EntityMappingGeneratedViews
             T.definition AS sysdiagram_definition, 
             True AS _from0
         FROM MVC_HotelProject2ModelStoreContainer.sysdiagrams AS T
+    ) AS T1");
+        }
+
+        /// <summary>
+        /// Gets the view for MVC_HotelProject2ModelStoreContainer.Users.
+        /// </summary>
+        /// <returns>The mapping view.</returns>
+        private static DbMappingView GetView18()
+        {
+            return new DbMappingView(@"
+    SELECT VALUE -- Constructing Users
+        [MVC_HotelProject2Model.Store.Users](T1.Users_ID, T1.Users_Name, T1.Users_Password, T1.Users_image, T1.Users_MemorizeQuestion, T1.Users_MemorizeAnswer)
+    FROM (
+        SELECT 
+            T.ID AS Users_ID, 
+            T.Name AS Users_Name, 
+            T.Password AS Users_Password, 
+            T.image AS Users_image, 
+            T.MemorizeQuestion AS Users_MemorizeQuestion, 
+            T.MemorizeAnswer AS Users_MemorizeAnswer, 
+            True AS _from0
+        FROM MVC_HotelProject2Entities.Users AS T
+    ) AS T1");
+        }
+
+        /// <summary>
+        /// Gets the view for MVC_HotelProject2ModelStoreContainer.Messages.
+        /// </summary>
+        /// <returns>The mapping view.</returns>
+        private static DbMappingView GetView19()
+        {
+            return new DbMappingView(@"
+    SELECT VALUE -- Constructing Messages
+        [MVC_HotelProject2Model.Store.Messages](T1.[Messages.UserID_from], T1.[Messages.UserID_to], T1.Messages_message, T1.Messages_date)
+    FROM (
+        SELECT 
+            T.UserID_from AS [Messages.UserID_from], 
+            T.UserID_to AS [Messages.UserID_to], 
+            T.message1 AS Messages_message, 
+            T.date AS Messages_date, 
+            True AS _from0
+        FROM MVC_HotelProject2Entities.Messages AS T
+    ) AS T1");
+        }
+
+        /// <summary>
+        /// Gets the view for MVC_HotelProject2Entities.Users.
+        /// </summary>
+        /// <returns>The mapping view.</returns>
+        private static DbMappingView GetView20()
+        {
+            return new DbMappingView(@"
+    SELECT VALUE -- Constructing Users
+        [MVC_HotelProject2Model.User](T1.User_ID, T1.User_Name, T1.User_Password, T1.User_MemorizeQuestion, T1.User_MemorizeAnswer, T1.User_image)
+    FROM (
+        SELECT 
+            T.ID AS User_ID, 
+            T.Name AS User_Name, 
+            T.Password AS User_Password, 
+            T.MemorizeQuestion AS User_MemorizeQuestion, 
+            T.MemorizeAnswer AS User_MemorizeAnswer, 
+            T.image AS User_image, 
+            True AS _from0
+        FROM MVC_HotelProject2ModelStoreContainer.Users AS T
+    ) AS T1");
+        }
+
+        /// <summary>
+        /// Gets the view for MVC_HotelProject2Entities.Messages.
+        /// </summary>
+        /// <returns>The mapping view.</returns>
+        private static DbMappingView GetView21()
+        {
+            return new DbMappingView(@"
+    SELECT VALUE -- Constructing Messages
+        [MVC_HotelProject2Model.Message](T1.[Message.UserID_from], T1.[Message.UserID_to], T1.Message_message1, T1.Message_date)
+    FROM (
+        SELECT 
+            T.UserID_from AS [Message.UserID_from], 
+            T.UserID_to AS [Message.UserID_to], 
+            T.message AS Message_message1, 
+            T.date AS Message_date, 
+            True AS _from0
+        FROM MVC_HotelProject2ModelStoreContainer.Messages AS T
     ) AS T1");
         }
     }

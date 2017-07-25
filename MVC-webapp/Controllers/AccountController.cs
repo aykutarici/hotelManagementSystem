@@ -9,11 +9,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVC_webapp.Models;
+using MVC_webapp.Util;
 
 namespace MVC_webapp.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {        
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

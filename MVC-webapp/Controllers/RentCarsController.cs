@@ -7,111 +7,110 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC_webapp.Models;
-using MVC_webapp.Util;
 
 namespace MVC_webapp.Controllers
 {
-    public class RoomsController : BaseController
+    public class RentCarsController : Controller
     {
         private MVC_HotelProject2Entities db = new MVC_HotelProject2Entities();
 
-        // GET: Rooms
+        // GET: RentCars
         public ActionResult Index()
         {
-            return View(db.Rooms.ToList());
+            return View(db.RentCars.ToList());
         }
 
-        // GET: Rooms/Details/5
+        // GET: RentCars/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = db.Rooms.Find(id);
-            if (room == null)
+            RentCar rentCar = db.RentCars.Find(id);
+            if (rentCar == null)
             {
                 return HttpNotFound();
             }
-            return PartialView(room);
+            return View(rentCar);
         }
 
-        // GET: Rooms/Create
+        // GET: RentCars/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Rooms/Create
+        // POST: RentCars/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RoomNum,RoomInfo,RoomStatus,Extra,Type,RoomPrice")] Room room)
+        public ActionResult Create([Bind(Include = "CarID,serviceID,CarBrand,CustomerID,Price")] RentCar rentCar)
         {
             if (ModelState.IsValid)
             {
-                db.Rooms.Add(room);
+                db.RentCars.Add(rentCar);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(room);
+            return View(rentCar);
         }
 
-        // GET: Rooms/Edit/5
+        // GET: RentCars/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = db.Rooms.Find(id);
-            if (room == null)
+            RentCar rentCar = db.RentCars.Find(id);
+            if (rentCar == null)
             {
                 return HttpNotFound();
             }
-            return View(room);
+            return View(rentCar);
         }
 
-        // POST: Rooms/Edit/5
+        // POST: RentCars/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoomNum,RoomInfo,RoomStatus,Extra,Type,RoomPrice")] Room room)
+        public ActionResult Edit([Bind(Include = "CarID,serviceID,CarBrand,CustomerID,Price")] RentCar rentCar)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(room).State = EntityState.Modified;
+                db.Entry(rentCar).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(room);
+            return View(rentCar);
         }
 
-        // GET: Rooms/Delete/5
+        // GET: RentCars/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = db.Rooms.Find(id);
-            if (room == null)
+            RentCar rentCar = db.RentCars.Find(id);
+            if (rentCar == null)
             {
                 return HttpNotFound();
             }
-            return View(room);
+            return View(rentCar);
         }
 
-        // POST: Rooms/Delete/5
+        // POST: RentCars/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Room room = db.Rooms.Find(id);
-            db.Rooms.Remove(room);
+            RentCar rentCar = db.RentCars.Find(id);
+            db.RentCars.Remove(rentCar);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

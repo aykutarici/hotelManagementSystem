@@ -19,6 +19,7 @@ namespace MVC_webapp.Models
         public string Password { get; set; }
         public string MemorizeQuestion { get; set; }
         public string MemorizeAnswer { get; set; }
+        public byte[] image { get; set; }
     
         public virtual Message Message { get; set; }
     }

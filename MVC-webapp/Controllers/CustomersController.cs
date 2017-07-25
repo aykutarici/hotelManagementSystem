@@ -7,10 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC_webapp.Models;
+using MVC_webapp.Util;
 
 namespace MVC_webapp.Controllers
 {
-    public class CustomersController : Controller
+    public class CustomersController : BaseController
     {
         private MVC_HotelProject2Entities db = new MVC_HotelProject2Entities();
 

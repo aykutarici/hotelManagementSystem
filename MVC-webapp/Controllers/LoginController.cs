@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC_webapp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,11 @@ namespace MVC_webapp.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            Session["logeduserID"] = null;
+            Session["logedusername"] = null;
+            Session["admin"] = null;
             return View();
+
         }
 
         // GET: Login/Details/5
@@ -64,6 +69,7 @@ namespace MVC_webapp.Controllers
             }
         }
 
+
         // GET: Login/Delete/5
         public ActionResult Delete(int id)
         {
@@ -84,6 +90,39 @@ namespace MVC_webapp.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult reacherror()
+        {
+
+            return PartialView();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(User u)
+        {
+            if (ModelState.IsValid)
+            {
+                using (MVC_HotelProject2Entities dc = new MVC_HotelProject2Entities())
+                {
+                    var v = dc.Users.Where(a => a.Name.Equals(u.Name) && a.Password.Equals(u.Password)).FirstOrDefault();
+                    if (v != null)
+                    {
+                        Session["logeduserID"] = v.ID.ToString();
+                        Session["logedusername"] = v.Name.ToString();
+                        Session["admin"] = v.ID.ToString();
+                        return RedirectToAction("afterlogin");
+                    }
+
+                }
+            }
+            return View();
+        }
+        public ActionResult afterlogin(User u)
+        {
+
+
+            return View();
         }
     }
 }

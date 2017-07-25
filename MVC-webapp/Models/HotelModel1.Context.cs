@@ -30,11 +30,11 @@ namespace MVC_webapp.Models
         public virtual DbSet<CheckOut> CheckOuts { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Laundry> Laundries { get; set; }
-        public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<RentCar> RentCars { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
     }
 }

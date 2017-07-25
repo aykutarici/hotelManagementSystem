@@ -15,7 +15,21 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.CheckOutDate, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.CheckOutDate, new { htmlAttributes = new { @class = "form-control" } })
+
+
+                    <div class='input-group date' id='datetimepicker1'>
+                        @Html.EditorFor(model => model.CheckOutDate, new { htmlAttributes = new { @class = "form-control date" } })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+
+
+                    <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+                    </script>
                     @Html.ValidationMessageFor(model => model.CheckOutDate, "", new { @class = "text-danger" })
                 </div>
             </div>
